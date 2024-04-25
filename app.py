@@ -24,6 +24,9 @@ def predict():
         Total_S2 = request.form['Total_S2']
         Moyenne_S2 = request.form['Moyenne_S2']
         Resultat_S2 = request.form['Résultat_S2']
+        
+        # Créer un dictionnaire pour stocker les valeurs valides
+        valid_values = {}
 
         # Vérifier si les champs ne sont pas vides
         error_messages = {}
@@ -96,6 +99,8 @@ def predict():
         # Convertir les probabilités en pourcentages
         pourcentage_predit = (probabilites_predites[0][1] * 100).round(2)
 
-        return render_template('pages-register.html', prediction_text='Votre chance de réussite: {} %'.format(pourcentage_predit))
+        prediction_available = True
+
+        return render_template('pages-register.html', prediction_text='Votre chance de réussite: {} %'.format(pourcentage_predit), prediction_available=prediction_available)
 if __name__ == "__main__":
     app.run(debug=True)

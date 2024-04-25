@@ -67,114 +67,107 @@
                                             session normale</p>
                                     </div>
 
-                                    <form id="predictionForm" action="{{ url_for('predict')}}" method="post" class="row g-3 needs-validation" novalidate>
-                                        <div class="col-12">
-                                            <input type="number" name="Mat" class="form-control" id="Mat" required
-                                                placeholder="Math S1">
-                                            {% if error_messages and 'Mat' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Mat'] }}</div>
-                                            {% endif %}
+                                    <form id="predictionForm" action="{{ url_for('predict')}}" method="post"
+                                        class="row g-3 needs-validation" novalidate>
+                                        <div class="row">
+
+                                            <div class="col-12 col-md-4">
+                                                <input type="number" name="Mat" class="form-control" id="Mat" required
+                                                    placeholder="Math S1">
+                                                {% if error_messages and 'Mat' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Mat'] }}</div>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="col-12 col-md-4">
+                                                <input type="number" name="Mi1" class="form-control" id="Mi1" required
+                                                    placeholder="Microéconomie S1">
+                                                {% if error_messages and 'Mi1' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Mi1'] }}</div>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="col-12 col-md-4">
+                                                <input type="number" name="Total_S1" class="form-control" id="Total_S1"
+                                                    required placeholder="Total S1">
+                                                {% if error_messages and 'Total_S1' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Total_S1'] }}</div>
+                                                {% endif %}
+                                                {% if error_messages and 'Total_S1_exceed' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Total_S1_exceed'] }}</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <br><br><br>
+
+                                        <div class="row">
+                                            <div class="col-12 col-md-4">
+                                                <input type="number" name="Moyenne_S1" class="form-control"
+                                                    id="Moyenne_S1" required readonly placeholder="Moyenne S1">
+                                                {% if error_messages and 'Moyenne_S1' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Moyenne_S1'] }}</div>
+                                                {% endif %}
+                                                {% if error_messages and 'Moyenne_S1_exceed' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Moyenne_S1'] }}</div>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="col-12 col-md-4">
+                                                <select class="form-control" id="selectValue"
+                                                    onchange="disablePlaceholderOption1()" name="Résultat_S1">
+                                                    <option value="2" selected>Résultat S1</option>
+                                                    <option value="0">Ajourné (e)</option>
+                                                    <option value="1">Admis (e)</option>
+                                                </select>
+                                                {% if error_messages and 'Résultat_S1' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Résultat_S1'] }}</div>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="col-12 col-md-4">
+                                                <input type="number" name="Mi2" class="form-control" id="Mi2" required
+                                                    placeholder="Microéconomie S2">
+                                                {% if error_messages and 'Mi2' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Mi2'] }}</div>
+                                                {% endif %}
+                                            </div>
                                         </div>
 
-                                        <div class="col-12">
-                                            <input type="number" name="Mi1" class="form-control" id="Mi1" required
-                                                placeholder="Microéconomie S1">
-                                            {% if error_messages and 'Mi1' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Mi1'] }}</div>
-                                            {% endif %}
-                                        </div>
+                                        <br><br><br>
 
-                                        <div class="col-12">
-                                            <input type="number" name="Total_S1" class="form-control" id="Total_S1"
-                                                required placeholder="Total S1">
-                                            {% if error_messages and 'Total_S1' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Total_S1'] }}</div>
-                                            {% endif %}
-                                            {% if error_messages and 'Total_S1_exceed' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Total_S1_exceed'] }}</div>
-                                            {% endif %}
-                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-4">
+                                                <input type="number" name="Total_S2" class="form-control" id="Total_S2"
+                                                    required placeholder="Total S2">
+                                                {% if error_messages and 'Total_S2' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Total_S2'] }}</div>
+                                                {% endif %}
+                                                {% if error_messages and 'Total_S2_exceed' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Total_S2_exceed'] }}</div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <input type="number" name="Moyenne_S2" class="form-control"
+                                                    id="Moyenne_S2" required readonly placeholder="Moyenne S2">
+                                                {% if error_messages and 'Moyenne_S2' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Moyenne_S2'] }}</div>
+                                                {% endif %}
+                                                {% if error_messages and 'Moyenne_S2_exceed' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Moyenne_S2_exceed'] }}</div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <select class="form-control" id="selectValue2"
+                                                    onchange="disablePlaceholderOption2()" name="Résultat_S2">
+                                                    <option value="3" selected>Résultat S2</option>
+                                                    <option value="0">Ajourné (e)</option>
+                                                    <option value="1">Admis (e)</option>
+                                                </select>
 
-                                        <div class="col-12">
-                                            <input type="number" name="Moyenne_S1" class="form-control" id="Moyenne_S1"
-                                                required placeholder="Moyenne S1">
-                                            {% if error_messages and 'Moyenne_S1' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Moyenne_S1'] }}</div>
-                                            {% endif %}
-                                            {% if error_messages and 'Moyenne_S1_exceed' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Moyenne_S1'] }}</div>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="col-12">
-                                            <script>
-                                                // JavaScript pour désactiver la sélection de l'option "Choisissez une valeur"
-                                                function disablePlaceholderOption1() {
-                                                    var select = document.getElementById("selectValue");
-                                                    var placeholderOption = select.options[0];
-                                                    placeholderOption.disabled = true;
-                                                }
-                                            </script>
-                                            <select class="form-control" id="selectValue"
-                                                onchange="disablePlaceholderOption1()" name="Résultat_S1">
-                                                <option value="2" selected>Résultat S1</option>
-                                                <option value="0">Ajourné (e)</option>
-                                                <option value="1">Admis (e)</option>
-                                            </select>
-                                            {% if error_messages and 'Résultat_S1' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Résultat_S1'] }}</div>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="col-12">
-                                            <input type="number" name="Mi2" class="form-control" id="Mi2" required
-                                                placeholder="Microéconomie S2">
-                                            {% if error_messages and 'Mi2' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Mi2'] }}</div>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="col-12">
-                                            <input type="number" name="Total_S2" class="form-control" id="Total_S2"
-                                                required placeholder="Total S2">
-                                            {% if error_messages and 'Total_S2' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Total_S2'] }}</div>
-                                            {% endif %}
-                                            {% if error_messages and 'Total_S2_exceed' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Total_S2_exceed'] }}</div>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="col-12">
-                                            <input type="number" name="Moyenne_S2" class="form-control" id="Moyenne_S2"
-                                                required placeholder="Moyenne S2">
-                                            {% if error_messages and 'Moyenne_S2' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Moyenne_S2'] }}</div>
-                                            {% endif %}
-                                            {% if error_messages and 'Moyenne_S2_exceed' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Moyenne_S2_exceed'] }}</div>
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="col-12">
-                                            <script>
-                                                // JavaScript pour désactiver la sélection de l'option "Choisissez une valeur"
-                                                function disablePlaceholderOption2() {
-                                                    var select = document.getElementById("selectValue2");
-                                                    var placeholderOption = select.options[0];
-                                                    placeholderOption.disabled = true;
-                                                }
-                                            </script>
-                                            <select class="form-control" id="selectValue2"
-                                                onchange="disablePlaceholderOption2()" name="Résultat_S2">
-                                                <option value="3" selected>Résultat S2</option>
-                                                <option value="0">Ajourné (e)</option>
-                                                <option value="1">Admis (e)</option>
-                                            </select>
-
-                                            {% if error_messages and 'Résultat_S2' in error_messages %}
-                                            <div class="text-danger">{{ error_messages['Résultat_S2'] }}</div>
-                                            {% endif %}
+                                                {% if error_messages and 'Résultat_S2' in error_messages %}
+                                                <div class="text-danger">{{ error_messages['Résultat_S2'] }}</div>
+                                                {% endif %}
+                                            </div>
                                         </div>
 
 
@@ -187,74 +180,52 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-12">
-                                            <button id="submitBtn" class="btn btn-primary w-100 shadow" type="submit">Prédire</button>
-
+                                        <!-- Le bouton de prédiction -->
+                                        <div class="col-12" {% if prediction_available %}style="display: none;" {% endif
+                                            %}>
+                                            <button id="submitBtn" class="btn btn-primary w-50 shadow text-center"
+                                                type="submit">Prédire</button>
                                         </div>
+
                                         <!-- Le deuxième bouton invisible -->
-                                        <div class="col-12">
-                                            <button id="openModalBtn" class="btn btn-primary w-100 shadow" type="button" style="display: none;">Ouvrir le modal</button>
-
+                                        <div class="col-12" {% if not prediction_available %}style="display: none;" {%
+                                            endif %}>
+                                            <button id="openModalBtn" class="btn btn-success w-50 shadow" type="button"
+                                                data-bs-target="#exampleModal" data-bs-toggle="modal">Voir le
+                                                résultat</button>
                                         </div>
 
-                                        <script>
-                                            document.addEventListener('DOMContentLoaded', function() {
-                                                var predictionForm = document.getElementById('predictionForm');
-                                                var submitBtn = document.getElementById('submitBtn');
-                                                var openModalBtn = document.getElementById('openModalBtn');
-                                        
-                                                // Cacher le bouton d'ouverture du modal au chargement de la page
-                                                openModalBtn.style.display = 'none';
-                                        
-                                                predictionForm.addEventListener('submit', function(event) {
-                                                    // Empêcher la soumission par défaut du formulaire
-                                                    event.preventDefault();
-                                        
-                                                    // Valider le formulaire
-                                                    if (predictionForm.checkValidity()) {
-                                                        // Afficher le bouton d'ouverture du modal
-                                                        openModalBtn.style.display = 'block';
-                                                        // Déclencher le clic du bouton d'ouverture du modal pour afficher le modal
-                                                        openModalBtn.click();
-                                                    } else {
-                                                        // Marquer les champs invalides
-                                                        predictionForm.classList.add('was-validated');
-                                                    }
-                                                });
-                                        
-                                                // Ajouter un écouteur d'événements au bouton d'ouverture du modal
-                                                openModalBtn.addEventListener('click', function() {
-                                                    // Afficher le modal
-                                                    var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-                                                    myModal.show();
-                                                });
-                                            });
-                                        </script>
-                                                                                
-                                    </form>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Résultat de la
-                                                        prédiction</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h4 class="text-center text-success">{{ prediction_text }}</h4>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary text-center"
-                                                        data-bs-dismiss="modal">Fermer</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Résultat de
+                                                            la prédiction</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h4 class="text-center text-success">{{ prediction_text }}</h4>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button id="closeBtn" type="button" class="btn btn-danger"
+                                                            data-bs-dismiss="modal">Fermé</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+
+                                        <script>
+                                            document.getElementById('closeBtn').addEventListener('click', function () {
+                                                // Rediriger l'utilisateur vers '/your-url' lorsque le bouton "Fermé" est cliqué
+                                                window.location.href = '/';
+                                            });
+                                        </script>
+
+                                    </form>
+
                                 </div>
 
                             </div>
@@ -283,6 +254,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
