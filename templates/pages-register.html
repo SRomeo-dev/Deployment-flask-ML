@@ -29,7 +29,7 @@
     <link href="{{ url_for('static', filename='vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ url_for('static', filename='/css1/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='/css/style.css') }}" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: NiceAdmin
@@ -55,8 +55,9 @@
 
                                 <div class="card-body">
                                     <div class="d-flex justify-content-center py-4">
-                                        <span class="d-none d-lg-block"><img class="img-fluid img-thumbnail"
-                                                src="static/img/logo.jpg" alt="" width="200px"></span>
+                                        <span class="d-block"><img class="img-fluid img-thumbnail"
+                                                src="static/img/logo.jpg" alt="" width="300px"></span>
+
                                     </div><!-- End Logo -->
 
 
@@ -68,27 +69,31 @@
                                     </div>
 
                                     <form id="predictionForm" action="{{ url_for('predict')}}" method="post"
-                                        class="row g-3 needs-validation" novalidate>
+                                        class="row g-3 needs-validation " novalidate>
                                         <div class="row">
 
-                                            <div class="col-12 col-md-4">
-                                                <input type="number" name="Mat" class="form-control" id="Mat" required
-                                                    placeholder="Math S1">
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <input type="number" name="Mat" class="form-control" id="Mat"
+                                                    value="{{ valid_values['Mat'] if 'Mat' in valid_values else '' }}"
+                                                    required placeholder="Math S1">
+
                                                 {% if error_messages and 'Mat' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Mat'] }}</div>
                                                 {% endif %}
                                             </div>
 
-                                            <div class="col-12 col-md-4">
-                                                <input type="number" name="Mi1" class="form-control" id="Mi1" required
-                                                    placeholder="Microéconomie S1">
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <input type="number" name="Mi1" class="form-control" id="Mi1"
+                                                    value=" {{ valid_values['Mi1'] if 'Mi1' in valid_values else '' }}"
+                                                    required placeholder="Microéconomie S1">
                                                 {% if error_messages and 'Mi1' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Mi1'] }}</div>
                                                 {% endif %}
                                             </div>
 
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Total_S1" class="form-control" id="Total_S1"
+                                                    value=" {{ valid_values['Total_S1'] if 'Total_S1' in valid_values else '' }}"
                                                     required placeholder="Total S1">
                                                 {% if error_messages and 'Total_S1' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Total_S1'] }}</div>
@@ -101,9 +106,10 @@
                                         <br><br><br>
 
                                         <div class="row">
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Moyenne_S1" class="form-control"
-                                                    id="Moyenne_S1" required readonly placeholder="Moyenne S1">
+                                                    id="Moyenne_S1" required readonly placeholder="Moyenne S1"
+                                                    value="{{ valid_values['Moyenne_S1'] if 'Moyenne_S1' in valid_values else '' }}">
                                                 {% if error_messages and 'Moyenne_S1' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Moyenne_S1'] }}</div>
                                                 {% endif %}
@@ -112,9 +118,10 @@
                                                 {% endif %}
                                             </div>
 
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-md-4 mb-3">
                                                 <select class="form-control" id="selectValue"
-                                                    onchange="disablePlaceholderOption1()" name="Résultat_S1">
+                                                    onchange="disablePlaceholderOption1()" name="Résultat_S1"
+                                                    value="{{ valid_values['Résultat_S1'] if 'Résultat_S1' in valid_values else '' }}">
                                                     <option value="2" selected>Résultat S1</option>
                                                     <option value="0">Ajourné (e)</option>
                                                     <option value="1">Admis (e)</option>
@@ -124,8 +131,9 @@
                                                 {% endif %}
                                             </div>
 
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Mi2" class="form-control" id="Mi2" required
+                                                    value="{{ valid_values['Mi2'] if 'Mi2' in valid_values else '' }}"
                                                     placeholder="Microéconomie S2">
                                                 {% if error_messages and 'Mi2' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Mi2'] }}</div>
@@ -136,9 +144,10 @@
                                         <br><br><br>
 
                                         <div class="row">
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Total_S2" class="form-control" id="Total_S2"
-                                                    required placeholder="Total S2">
+                                                    required placeholder="Total S2"
+                                                    value="{{ valid_values['Total_S2'] if 'Total_S2' in valid_values else '' }}">
                                                 {% if error_messages and 'Total_S2' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Total_S2'] }}</div>
                                                 {% endif %}
@@ -146,9 +155,10 @@
                                                 <div class="text-danger">{{ error_messages['Total_S2_exceed'] }}</div>
                                                 {% endif %}
                                             </div>
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Moyenne_S2" class="form-control"
-                                                    id="Moyenne_S2" required readonly placeholder="Moyenne S2">
+                                                    id="Moyenne_S2" required readonly placeholder="Moyenne S2"
+                                                    value="{{ valid_values['Moyenne_S2'] if 'Moyenne_S2' in valid_values else '' }}">
                                                 {% if error_messages and 'Moyenne_S2' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Moyenne_S2'] }}</div>
                                                 {% endif %}
@@ -156,9 +166,10 @@
                                                 <div class="text-danger">{{ error_messages['Moyenne_S2_exceed'] }}</div>
                                                 {% endif %}
                                             </div>
-                                            <div class="col-12 col-md-4">
+                                            <div class="col-12 col-md-4 mb-3">
                                                 <select class="form-control" id="selectValue2"
-                                                    onchange="disablePlaceholderOption2()" name="Résultat_S2">
+                                                    onchange="disablePlaceholderOption2()" name="Résultat_S2"
+                                                    value="{{ valid_values['Résultat_S2'] if 'Résultat_S2' in valid_values else '' }}">
                                                     <option value="3" selected>Résultat S2</option>
                                                     <option value="0">Ajourné (e)</option>
                                                     <option value="1">Admis (e)</option>
@@ -176,21 +187,22 @@
                                                 <input class="form-check-input" name="terms" type="checkbox" value=""
                                                     id="acceptTerms" required>
                                                 <label class="form-check-label" for="acceptTerms">J'accepte les <a
-                                                        href="#">terms et conditions</a></label>
+                                                        href="#" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop">terms et conditions</a></label>
                                             </div>
                                         </div>
 
                                         <!-- Le bouton de prédiction -->
                                         <div class="col-12" {% if prediction_available %}style="display: none;" {% endif
                                             %}>
-                                            <button id="submitBtn" class="btn btn-primary w-50 shadow text-center"
+                                            <button id="submitBtn" class="btn btn-primary w-100 shadow text-center"
                                                 type="submit">Prédire</button>
                                         </div>
 
                                         <!-- Le deuxième bouton invisible -->
                                         <div class="col-12" {% if not prediction_available %}style="display: none;" {%
                                             endif %}>
-                                            <button id="openModalBtn" class="btn btn-success w-50 shadow" type="button"
+                                            <button id="openModalBtn" class="btn btn-success w-100 shadow" type="button"
                                                 data-bs-target="#exampleModal" data-bs-toggle="modal">Voir le
                                                 résultat</button>
                                         </div>
@@ -207,7 +219,8 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <h4 class="text-center text-success">{{ prediction_text }}</h4>
+                                                        <h4 class="text-center {{ text_color_class }}">{{
+                                                            prediction_text }}</h4>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button id="closeBtn" type="button" class="btn btn-danger"
@@ -223,6 +236,42 @@
                                                 window.location.href = '/';
                                             });
                                         </script>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Termes et conditions
+                                                            d'utilisation</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <ol class="">
+                                                            <li>Vous êtes autorisé à utiliser notre service à des fins
+                                                                personnelles uniquement.</li> <br>
+                                                            <li>Vous acceptez de respecter les lois et règlements en
+                                                                vigueur lors de l'utilisation de notre service.</li> <br>
+                                                            <li>Vous comprenez que toute utilisation abusive ou
+                                                                inappropriée de notre service peut entraîner des mesures
+                                                                disciplinaires.</li> <br>
+                                                            <li>Vous acceptez de ne pas utiliser notre service pour
+                                                                diffuser du contenu offensant, illégal ou nuisible.</li> <br>
+                                                            <li>Nous nous réservons le droit de modifier ou de mettre
+                                                                fin à notre service à tout moment, sans préavis.</li> 
+                                                        </ol>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
 
                                     </form>
 
