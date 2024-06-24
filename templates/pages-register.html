@@ -94,8 +94,8 @@
 
                                             <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Total_S1" class="form-control" id="Total_S1"
-                                                    value=" {{ valid_values['Total_S1'] if 'Total_S1' in valid_values else '' }}"
-                                                    required placeholder="Total S1">
+                                                    required placeholder="Total S1"
+                                                    value="{{ valid_values['Total_S1'] if 'Total_S1' in valid_values else '' }}">
                                                 {% if error_messages and 'Total_S1' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Total_S1'] }}</div>
                                                 {% endif %}
@@ -156,6 +156,7 @@
                                                 <div class="text-danger">{{ error_messages['Total_S2_exceed'] }}</div>
                                                 {% endif %}
                                             </div>
+
                                             <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Moyenne_S2" class="form-control"
                                                     id="Moyenne_S2" required readonly placeholder="Moyenne S2"
@@ -167,6 +168,7 @@
                                                 <div class="text-danger">{{ error_messages['Moyenne_S2_exceed'] }}</div>
                                                 {% endif %}
                                             </div>
+                                            
                                             <div class="col-12 col-md-4 mb-3">
                                                 <select class="form-control" id="selectValue2"
                                                     onchange="disablePlaceholderOption2()" name="Résultat_S2"
