@@ -84,8 +84,9 @@
 
                                             <div class="col-12 col-md-4 mb-3">
                                                 <input type="number" name="Mi1" class="form-control" id="Mi1"
-                                                    value=" {{ valid_values['Mi1'] if 'Mi1' in valid_values else '' }}"
+                                                    value="{{ valid_values['Mi1'] if 'Mi1' in valid_values else '' }}"
                                                     required placeholder="Microéconomie S1">
+
                                                 {% if error_messages and 'Mi1' in error_messages %}
                                                 <div class="text-danger">{{ error_messages['Mi1'] }}</div>
                                                 {% endif %}
